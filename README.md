@@ -708,7 +708,7 @@ latest version. The image supports all tippecanoe flags and options.
 AWS Lambda Layer
 ----------------
 
-You can add Tippecanoe to an AWS Lambda function using the publicly available [Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) hosted at: `arn:aws:lambda:us-east-1:003014164496:layer:Mapbox_Tippecanoe-1_34_3:1`
+You can add Tippecanoe to an AWS Lambda function using the publicly available [Lambda Layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html) hosted at: `arn:aws:lambda:us-east-1:003014164496:layer:Mapbox_Tippecanoe-1_34_3:3`
 
 Once you've added the layer, the binaries will be located in `/opt/bin` 
 
@@ -719,7 +719,7 @@ var exec = require('child_process').exec;
 
 exports.handler = function(event, context, callback) {
   var exePath = path.resolve(__dirname, '');
-  exec(`/opt/tippecanoe -o out.mbtiles -zg --drop-densest-as-needed in.geojson`, { cwd: exePath }, (error, stdout, stderr) => {
+  exec(`/opt/bin/tippecanoe -o out.mbtiles -zg --drop-densest-as-needed in.geojson`, { cwd: exePath }, (error, stdout, stderr) => {
     if (error) {
       callback(error);
     }
